@@ -12,23 +12,16 @@ export class Answers extends Component {
                         answerValues.map((answer,index) => {
                             const { questions } = this.props;
                             const actualAnswer = questions.questions[index].answers[questions.questions[index].correctIndex]
-                            if (actualAnswer === answer) {
-                                return (
-                                    <div className="my-2"> 
-                                        <h1 className="font-bold mt-2 text-xl ">Question {index+1}</h1>
-                                        <h2 className="text-green-600" key={index}><strong>Correct!</strong> You answered: "{ answer }"</h2>
-                                    </div>
-                                    
-                                )
-                            } else {
-                                return (
-                                    <div className="my-2">
-                                        <h1 className="font-bold mt-2 text-xl">Question {index+1}</h1>
-                                        <h2 className="text-red-600" key={index}><strong>Wrong!</strong> You answered: "{ answer }" <br/> <span className="text-xs">(Correct Answer: "{ actualAnswer }")</span></h2>
-                                    </div>
-                                )                 
-                            }
-
+                            return (
+                                <div className="my-2"> 
+                                    <h1 className="font-bold mt-2 text-xl ">Question {index+1}</h1>
+                                    {
+                                        (actualAnswer === answer) 
+                                        ? <h2 className="text-green-600" key={index}><strong>Correct!</strong> You answered: "{ answer }"</h2> 
+                                        : <h2 className="text-red-600" key={index}><strong>Wrong!</strong> You answered: "{ answer }" <br/> <span className="text-xs">(Correct Answer: "{ actualAnswer }")</span></h2>
+                                    }
+                                </div>
+                            )           
                         })   
                     }    
                 </div>

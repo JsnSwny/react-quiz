@@ -12,7 +12,8 @@ export class Quiz extends Component {
 
         }
     }
-
+    
+    // Creates object containing question number: answer
     resetAnswers() {
         const questionsObj = {}
         for(let i=0; i<questions.questions.length; i++) {
@@ -23,10 +24,12 @@ export class Quiz extends Component {
         })
     }
 
+    
     componentDidMount() {
         this.resetAnswers()
     }
 
+    // Handles radio select
     selectRadio = (e) => {
         let { questionNumber, answers } = this.state;
         let currentAnswers = answers;
@@ -36,7 +39,7 @@ export class Quiz extends Component {
         })
     }
     
-    // Proceed to next step
+    // Proceed to next question
     nextQuestion = () => {
         const { questionNumber } = this.state;
         this.setState({
@@ -44,7 +47,7 @@ export class Quiz extends Component {
         });
     }
 
-    // Go back to prev step
+    // Go back to prev question
     prevQuestion = () => {
         const { questionNumber } = this.state;
         this.setState({
@@ -52,12 +55,14 @@ export class Quiz extends Component {
         });
     }
 
+    // Move to answers component
     submitQuestions = () => {
         this.setState({
             step: this.state.step + 1
         })
     }
 
+    // Reset state
     tryAgain = () => {
         this.setState({
             step: 1,
@@ -69,7 +74,6 @@ export class Quiz extends Component {
 
     render() {
         const { questionNumber } = this.state;
-
         if (this.state.step === 1)  {
             return (
                 <div className="h-full sm:h-screen flex flex-col justify-center items-center">  
@@ -88,7 +92,7 @@ export class Quiz extends Component {
                         </div>
                 </div>
             )      
-        } else {
+        } else if (this.state.step === 2) {
             return (
                 <div className="h-full flex justify-center items-center my-4">  
                     <Answers answers={ this.state.answers } questions={ questions } tryAgain={ this.tryAgain } />

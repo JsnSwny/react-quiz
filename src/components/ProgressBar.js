@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 export class ProgressBar extends Component {
-    
     render() {
         return (
             <div style={{ width: "100%",  height: "30px" }} className="bg-red-500 mt-4 rounded">
