@@ -17,10 +17,13 @@ export class Question extends Component {
                         questions[questionNumber].answers.map((answer,index) => {
                         const checked = this.props.answer === answer ? true : false;
                         return (
-                            <div className="text-left text-sm md:text-xl my-2" key={index}>
-                                <input type="radio" key={answer} onChange={this.props.selectRadio} name={questionNumber} checked={checked} value={answer}/> {answer}
-                                <br/>
-                            </div>
+                            <React.Fragment key={index}>
+                                { 
+                                    checked === true
+                                    ? <button value={answer} onClick={this.props.selectOption} className="w-full focus:outline-none text-left text-sm md:text-xl my-2 bg-green-200 p-3 cursor-pointer">{ answer }</button>
+                                    : <button value={answer} onClick={this.props.selectOption} className="w-full focus:outline-none text-left text-sm md:text-xl my-2 bg-gray-100 hover:bg-gray-200 p-3 cursor-pointer">{ answer }</button>
+                                }
+                            </React.Fragment>
                         )
                         })   
                     }      

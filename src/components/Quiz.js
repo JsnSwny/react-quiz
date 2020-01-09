@@ -30,10 +30,11 @@ export class Quiz extends Component {
     }
 
     // Handles radio select
-    selectRadio = (e) => {
+    selectOption = (e) => {
         let { questionNumber, answers } = this.state;
         let currentAnswers = answers;
         currentAnswers[questionNumber] = e.target.value
+        console.log(e.target.value)
         this.setState({
             answers: currentAnswers
         })
@@ -81,14 +82,14 @@ export class Quiz extends Component {
                             <Question 
                                 questionNumber={ questionNumber }
                                 questions={ questions.questions }
-                                selectRadio={ this.selectRadio }
+                                selectOption={ this.selectOption }
                                 answer={ this.state.answers[questionNumber] }
                             />
                     </div>
-                        <div className="flex absolute bottom-0 md:static mb-6">
-                            {questionNumber > 0 && <button className="bg-red-500 hover:bg-red-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-3 rounded" onClick={ this.prevQuestion }>Previous Question</button>}
-                            {questionNumber + 1 < questions.questions.length && <button className="bg-blue-500 hover:bg-blue-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-3 rounded" onClick={ this.nextQuestion }>Next Question</button>}
-                            {questionNumber + 1 === questions.questions.length && <button className="bg-green-500 hover:bg-green-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-8 rounded" onClick={ this.submitQuestions }>Submit</button>}
+                        <div className="flex md:static mb-6">
+                            {questionNumber > 0 && <button className="bg-red-500 focus:outline-none hover:bg-red-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-3 rounded" onClick={ this.prevQuestion }>Previous Question</button>}
+                            {questionNumber + 1 < questions.questions.length && <button className="bg-blue-500 focus:outline-none hover:bg-blue-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-3 rounded" onClick={ this.nextQuestion }>Next Question</button>}
+                            {questionNumber + 1 === questions.questions.length && <button className="bg-green-500 focus:outline-none hover:bg-green-400 text-sm md:text-lg text-white font-bold mx-2 mt-4 py-4 px-8 rounded" onClick={ this.submitQuestions }>Submit</button>}
                         </div>
                 </div>
             )      

@@ -37,7 +37,7 @@ export class Answers extends Component {
                     }    
                     </div>
                 </div>
-                <button className="bg-orange-500 hover:bg-orange-400 text-white mx-2 mt-8 py-3 px-10 font-bold rounded" onClick={ this.props.tryAgain }>Try Again</button>
+                <button className="bg-orange-500 focus:outline-none hover:bg-orange-400 text-white mx-2 mt-8 py-3 px-10 font-bold rounded" onClick={ this.props.tryAgain }>Try Again</button>
             </div>
             
         )
