@@ -12,7 +12,7 @@ export class Quiz extends Component {
 
         }
     }
-    
+
     // Creates object containing question number: answer
     resetAnswers() {
         const questionsObj = {}
@@ -94,7 +94,7 @@ export class Quiz extends Component {
             )      
         } else if (this.state.step === 2) {
             return (
-                <div className="h-full flex justify-center items-center my-4">  
+                <div className="lg:h-screen flex justify-center items-center my-4 lg:my-0">  
                     <Answers answers={ this.state.answers } questions={ questions } tryAgain={ this.tryAgain } />
                 </div>
             )
