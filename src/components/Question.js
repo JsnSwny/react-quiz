@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import ProgressBar from './ProgressBar'
 
 const Question = ({ questions, questionNumber, selectOption, answerValue }) => {
