@@ -7,28 +7,17 @@ const Quiz = () => {
 
     const [step, setStep] = useState(1);
     const [questionNumber, setQuestionNumber] = useState(0);
-    const [answers, setAnswers] = useState({});
+    const [answers, setAnswers] = useState([new Array(questions.questions.length).fill("")]);
 
     // Creates object containing question number: answer
     const resetAnswers = () => {
-        const questionsObj = {}
-        for(let i=0; i<questions.questions.length; i++) {
-            questionsObj[i] = '';
-        }
-        setAnswers(questionsObj)
-        
+        setAnswers(new Array(questions.questions.length).fill(""))
     }
-    
-    useEffect(() => {
-        resetAnswers()
         
-    }, [])
-        
-    // Handles radio select
+    // Handles answer select
     const selectOption = (e) => {
-        let currentAnswers = answers;
-        currentAnswers[questionNumber] = e.target.value
-        setAnswers(currentAnswers)
+        answers[questionNumber] = e.target.value
+        setAnswers([...answers])
     }
     
     // Proceed to next question
@@ -62,7 +51,7 @@ const Quiz = () => {
                             questionNumber={ questionNumber }
                             questions={ questions.questions }
                             selectOption={ selectOption }
-                            answerValue={ answers[questionNumber] }
+                            answerValue={ answers }
                         />
                 </div>
                     <div className="flex md:static mb-6">
