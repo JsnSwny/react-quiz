@@ -17,21 +17,17 @@ const Answers = ({ answers, questions, tryAgain }) => {
                 {
                     answers.map((answer,index) => {
                         const actualAnswer = questions.questions[index].answers[questions.questions[index].correctIndex]
-                        if (actualAnswer === answer) {
-                            return (
-                                <div key={index} className="md:w-5/12 lg:w-1/3 xl:w-1/4 m-4 bg-green-200 py-6 rounded-lg shadow-inner"> 
-                                    <h1 className="font-bold text-xl ">Question {index+1}</h1>
-                                        <h2 className="m-4"><strong className="text-green-600">Correct!</strong> You answered: "{ answer }"</h2> 
-                                </div>
-                            )
-                        } else {
-                            return (
-                                <div key={index} className="md:w-5/12 lg:w-1/3 xl:w-1/4 m-4 bg-red-200 py-6 rounded-lg shadow-inner"> 
-                                    <h1 className="font-bold text-xl ">Question {index+1}</h1>
-                                    <h2 className="m-4"><strong className="text-red-600">Wrong!</strong> You answered: "{ answer }" <br/> <span className="text-xs">(Correct Answer: "{ actualAnswer }")</span></h2>
-                                </div>
-                            )      
-                        }     
+                        return (
+                            <div key={index} className="md:w-5/12 lg:w-1/3 xl:w-1/4 m-4 bg-gray-300 py-6 rounded-lg shadow-inner"> 
+                                <h1 className="font-bold text-xl">Q{index+1}:</h1>
+                                <h1 className="text-lg mx-4">{ questions.questions[index].question }</h1>
+                                { 
+                                    answer === actualAnswer 
+                                    ? <h2 className="mx-4 mt-2 text-green-600"><strong>Correct!</strong> Answer: "{ actualAnswer }"</h2> 
+                                    : <h2 className="mx-4 mt-2 text-red-600"><strong>Wrong!</strong> Answer: "{ actualAnswer }"</h2> 
+                                }
+                            </div>
+                        )
                     })   
                 }    
                 </div>
